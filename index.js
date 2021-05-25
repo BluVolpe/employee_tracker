@@ -1,18 +1,24 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "FordFusion2011@!",
-  database: "employee_trackerdb",
-});
-
-connection.connect((err) => {
-  if (err) throw err;
-  console.log(`connected as id ${connection.threadId}`);
-});
+function query(string) {
+    const connection = mysql.createConnection({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "password",
+        database: "employee_trackerdb",
+      });
+      
+      connection.connect((err) => {
+        if (err) throw err;
+        console.log(`connected as id ${connection.threadId}`);
+        connection.query(string, (err, res) =>{
+            if (err) throw err;
+            console.log(res);
+        })
+      });
+}
 
 const questions = [
   {
@@ -46,7 +52,68 @@ inquirer.prompt(questions).then(function (data) {
         inquirer.prompt(addQuestion2).then(function (data) {
           let departmentName = data.addDepartment;
           console.log(departmentName);
+          query("INSERT INTO department (`name`) VALUES (\""+departmentName+"\")");
         });
+      }
+      else if (choiceAdd == "Role") {
+          let addRoleArray = [
+              {
+                  type: "input",
+                  message: "What is the title of this role?",
+                  name: "roleTitle"
+              },
+              {
+                  type: "number",
+                  message: "What is the salary for this role?",
+                  name: "roleSalary"
+              },
+              {
+                  type: "number",
+                  message: "What is the department ID for this role?",
+                  name: "roleID"
+              }
+          ]
+
+          inquirer.prompt(addRoleArray).then(function (data) {
+              let roleTitle = data.roleTitle;
+              let roleSalary = data.roleSalary;
+              let roleID = data.roleID;
+
+              query("INSERT INTO role (`title`, `salary`, `department_id`) VALUES (\""+roleTitle+"\", \""+roleSalary+"\", \""+roleID+"\")");
+          })
+      }
+      else if (choiceAdd == "Employee") {
+          let addEmpArray = [
+              {
+                  type: "input",
+                  message: "What is the employees first name?",
+                  name: "empFirstName"
+              },
+              {
+                  type: "input",
+                  message: "What is the employees last name?",
+                  name: "empLastName"
+              },
+              {
+                  type: "number",
+                  message: "What is the employees role ID?",
+                  name: "empRoleID"
+              },
+              {
+                  type: "number",
+                  message: "What is the employees managers ID?",
+                  name: "empManagerID"
+              }
+          ]
+
+          inquirer.prompt(addEmpArray).then(function (data) {
+              let empFirstName = data.empFirstName;
+              let empLastName = data.empLastName;
+              let empRoleID = data.empRoleID;
+              let empManagerID = data.empManagerID;
+
+              query("INSERT INTO employee (`first_name`, `last_name`, `role_id`, `manager_id`) VALUES (\""+empFirstName+"\", \""+empLastName+"\", \""+empRoleID+"\", \""+empManagerID+"\")");
+          })
       }
     });
   } else if (choice == "View") {

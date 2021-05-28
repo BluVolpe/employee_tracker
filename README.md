@@ -30,5 +30,8 @@ https://github.com/BluVolpe
 JavaScript and NodeJS
 ## Img
 
-https://user-images.githubusercontent.com/34254871/119926930-5fc08300-bf46-11eb-8070-5db694764004.mp4
+
+https://user-images.githubusercontent.com/34254871/119926967-79fa6100-bf46-11eb-8f01-1cb4d9f33b54.mp4
+
+
 

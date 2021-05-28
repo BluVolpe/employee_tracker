@@ -1,3 +1,4 @@
+
 # Employee Tracker
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -28,3 +29,6 @@ https://github.com/BluVolpe
 ## Tech
 JavaScript and NodeJS
 ## Img
+
+https://user-images.githubusercontent.com/34254871/119926930-5fc08300-bf46-11eb-8070-5db694764004.mp4
+

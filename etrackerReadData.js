@@ -1,21 +1,21 @@
-const mysql = require('mysql');
+const mysql = require("mysql");
 
 const connection = mysql.createConnection({
-  host: 'localhost',
+  host: "localhost",
 
   // Your port; if not 3306
   port: 3306,
 
   // Your username
-  user: 'root',
+  user: "root",
 
   // Be sure to update with your own MySQL password!
-  password: 'FordFusion2011@!',
-  database: 'employee_trackerDB',
+  password: "FordFusion2011@!",
+  database: "employee_trackerDB",
 });
 
 const afterConnection = () => {
-  connection.query('SELECT * FROM products', (err, res) => {
+  connection.query("SELECT * FROM products", (err, res) => {
     if (err) throw err;
     console.log(res);
     connection.end();

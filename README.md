@@ -31,7 +31,7 @@ JavaScript and NodeJS
 ## Img
 
 
-https://drive.google.com/file/d/1jY3SzFsi7yBM-2mnw44lRs4nYYX_LJ5C/view
+https://drive.google.com/file/d/1jY3SzFsi7yBM-2mnw44lRs4nYYX_LJ5C/view  - walkthrough video 1080p
 
 
 
